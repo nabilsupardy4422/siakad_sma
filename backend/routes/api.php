@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleWorkflowController;
+use App\Http\Controllers\AttendanceController;
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -34,6 +35,18 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/schedules/{schedule}/resubmit', [ScheduleWorkflowController::class, 'resubmit'])
         ->middleware('role:TU');
+
+        Route::middleware('role:Guru Mata Pelajaran')->group(function () {
+            Route::get('/schedules/{schedule}/attendance', [
+                AttendanceController::class,
+                'index',
+            ]);
+
+            Route::post('/schedules/{schedule}/attendance', [
+                AttendanceController::class,
+                'store',
+            ]);
+        });
 });
 
 Route::get('/test', function () {

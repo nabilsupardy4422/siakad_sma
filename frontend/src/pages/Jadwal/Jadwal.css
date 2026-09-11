@@ -403,3 +403,36 @@
       width: 100%;
     }
   }
+
+  .attendance-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 4px;
+  }
+
+  .attendance-summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #ffffff;
+  }
+
+  .attendance-summary-item strong {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .attendance-summary-item span {
+    font-size: 13px;
+    color: #6b7280;
+  }
+
+  @media (max-width: 768px) {
+    .attendance-summary {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }

@@ -18,6 +18,7 @@ import './App.css'
 import ScheduleMonitoringPage from './pages/JadwalWorkflow/ScheduleMonitoringPage'
 import TeacherSchedulePage from './pages/JadwalWorkflow/TeacherSchedulePage'
 import StudentSchedulePage from './pages/JadwalWorkflow/StudentSchedulePage'
+import AttendancePage from './pages/Absensi/AttendancePage'
 
 function LandingPage() {
   return (
@@ -59,18 +60,24 @@ function App() {
         </Route>
 
         <Route
-            element={
-              <ProtectedRoute allowedRoles={['Guru Mata Pelajaran']} />
-            }
-          >
-            <Route element={<DashboardLayout />}>
-              <Route path="/guru" element={<GuruDashboard />} />
-              <Route
-                path="/guru/jadwal"
-                element={<TeacherSchedulePage />}
-              />
-            </Route>
+          element={
+            <ProtectedRoute allowedRoles={['Guru Mata Pelajaran']} />
+          }
+        >
+          <Route element={<DashboardLayout />}>
+            <Route path="/guru" element={<GuruDashboard />} />
+
+            <Route
+              path="/guru/jadwal"
+              element={<TeacherSchedulePage />}
+            />
+
+            <Route
+              path="/guru/absensi/:scheduleId"
+              element={<AttendancePage />}
+            />
           </Route>
+        </Route>
 
         <Route element={<ProtectedRoute allowedRoles={['Wali Kelas']} />}>
           <Route element={<DashboardLayout />}>
