@@ -303,3 +303,57 @@ export async function resubmitSchedule(token, id) {
 
   return data
 }
+
+export async function getAttendance(token, scheduleId, date) {
+  const response = await fetch(
+    `${API_URL}/schedules/${scheduleId}/attendance?date=${encodeURIComponent(date)}`,
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengambil data absensi.',
+    )
+    error.status = response.status
+    error.errors = data.errors || {}
+    throw error
+  }
+
+  return data
+}
+
+export async function saveAttendance(token, scheduleId, attendanceData) {
+  const response = await fetch(
+    `${API_URL}/schedules/${scheduleId}/attendance`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(attendanceData),
+    },
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal menyimpan absensi.',
+    )
+    error.status = response.status
+    error.errors = data.errors || {}
+    throw error
+  }
+
+  return data
+}
