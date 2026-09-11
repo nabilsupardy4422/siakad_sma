@@ -13,6 +13,7 @@ import {
   deleteSchedule,
   getScheduleOptions,
   getSchedules,
+  resubmitSchedule,
   updateSchedule,
 } from '../../services/api'
 import './Jadwal.css'
@@ -40,6 +41,7 @@ function JadwalPage() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [deletingId, setDeletingId] = useState(null)
+  const [resubmittingId, setResubmittingId] = useState(null)
 
   const [showForm, setShowForm] = useState(false)
   const [editingSchedule, setEditingSchedule] = useState(null)
@@ -250,6 +252,39 @@ function JadwalPage() {
     }
   }
 
+  const handleResubmit = async (schedule) => {
+    if (!token) {
+      return
+    }
+
+    const confirmed = window.confirm(
+      `Kirim ulang jadwal ${schedule.subject?.name || ''} - ${schedule.class?.name || ''} pada ${schedule.day} untuk divalidasi kembali oleh Wakakur?`,
+    )
+
+    if (!confirmed) {
+      return
+    }
+
+    setResubmittingId(schedule.id)
+    setError('')
+    setSuccess('')
+
+    try {
+      const response = await resubmitSchedule(token, schedule.id)
+
+      setSuccess(
+        response.message ||
+          'Jadwal berhasil dikirim ulang untuk validasi.',
+      )
+
+      await loadSchedules()
+    } catch (err) {
+      setError(err.message || 'Gagal mengirim ulang jadwal.')
+    } finally {
+      setResubmittingId(null)
+    }
+  }
+
   return (
     <section className="jadwal-page">
       <div className="jadwal-page-header">
@@ -269,7 +304,7 @@ function JadwalPage() {
             type="button"
             className="jadwal-refresh-button"
             onClick={loadSchedules}
-            disabled={loading || saving}
+            disabled={loading || saving || resubmittingId !== null}
           >
             <RefreshCw
               size={17}
@@ -282,7 +317,7 @@ function JadwalPage() {
             type="button"
             className="jadwal-primary-button"
             onClick={openCreateForm}
-            disabled={saving}
+            disabled={saving || resubmittingId !== null}
           >
             <Plus size={18} />
             Tambah Jadwal
@@ -363,7 +398,8 @@ function JadwalPage() {
                       key={teacher.id}
                       value={teacher.id}
                     >
-                      {teacher.user?.name || `Guru ${teacher.id}`}
+                      {teacher.user?.name ||
+                        `Guru ${teacher.id}`}
                       {teacher.nip
                         ? ` - ${teacher.nip}`
                         : ''}
@@ -630,87 +666,121 @@ function JadwalPage() {
               </thead>
 
               <tbody>
-                {schedules.map((schedule, index) => (
-                  <tr key={schedule.id}>
-                    <td>{index + 1}</td>
+                {schedules.map((schedule, index) => {
+                  const isDeleting =
+                    deletingId === schedule.id
+                  const isResubmitting =
+                    resubmittingId === schedule.id
 
-                    <td>
-                      <strong>{schedule.day}</strong>
-                    </td>
+                  return (
+                    <tr key={schedule.id}>
+                      <td>{index + 1}</td>
 
-                    <td>
-                      {schedule.start_time?.slice(0, 5)} -{' '}
-                      {schedule.end_time?.slice(0, 5)}
-                    </td>
+                      <td>
+                        <strong>{schedule.day}</strong>
+                      </td>
 
-                    <td>
-                      <div className="jadwal-subject">
-                        <strong>
-                          {schedule.subject?.name || '-'}
-                        </strong>
+                      <td>
+                        {schedule.start_time?.slice(0, 5)} -{' '}
+                        {schedule.end_time?.slice(0, 5)}
+                      </td>
 
-                        <small>
-                          {schedule.subject?.code || '-'}
-                        </small>
-                      </div>
-                    </td>
+                      <td>
+                        <div className="jadwal-subject">
+                          <strong>
+                            {schedule.subject?.name || '-'}
+                          </strong>
 
-                    <td>
-                      {schedule.teacher?.user?.name || '-'}
-                    </td>
+                          <small>
+                            {schedule.subject?.code || '-'}
+                          </small>
+                        </div>
+                      </td>
 
-                    <td>
-                      {schedule.class?.name || '-'}
-                    </td>
+                      <td>
+                        {schedule.teacher?.user?.name || '-'}
+                      </td>
 
-                    <td>
-                      <span className="jadwal-status">
-                        {schedule.status || '-'}
-                      </span>
-                    </td>
+                      <td>
+                        {schedule.class?.name || '-'}
+                      </td>
 
-                    <td>
-                      <div className="jadwal-row-actions">
-                        <button
-                          type="button"
-                          className="jadwal-action-button jadwal-edit-button"
-                          onClick={() =>
-                            openEditForm(schedule)
-                          }
-                          disabled={
-                            saving ||
-                            deletingId === schedule.id
-                          }
-                          title="Edit jadwal"
-                        >
-                          <Pencil size={16} />
-                        </button>
+                      <td>
+                        <span className="jadwal-status">
+                          {schedule.status || '-'}
+                        </span>
+                      </td>
 
-                        <button
-                          type="button"
-                          className="jadwal-action-button jadwal-delete-button"
-                          onClick={() =>
-                            handleDelete(schedule)
-                          }
-                          disabled={
-                            saving ||
-                            deletingId === schedule.id
-                          }
-                          title="Hapus jadwal"
-                        >
-                          {deletingId === schedule.id ? (
-                            <RefreshCw
-                              size={16}
-                              className="is-spinning"
-                            />
-                          ) : (
-                            <Trash2 size={16} />
+                      <td>
+                        <div className="jadwal-row-actions">
+                          <button
+                            type="button"
+                            className="jadwal-action-button jadwal-edit-button"
+                            onClick={() =>
+                              openEditForm(schedule)
+                            }
+                            disabled={
+                              saving ||
+                              isDeleting ||
+                              isResubmitting
+                            }
+                            title="Edit jadwal"
+                          >
+                            <Pencil size={16} />
+                          </button>
+
+                          {schedule.status === 'rejected' && (
+                            <button
+                              type="button"
+                              className="jadwal-action-button jadwal-edit-button"
+                              onClick={() =>
+                                handleResubmit(schedule)
+                              }
+                              disabled={
+                                saving ||
+                                isDeleting ||
+                                resubmittingId !== null
+                              }
+                              title="Kirim ulang untuk validasi"
+                            >
+                              {isResubmitting ? (
+                                <RefreshCw
+                                  size={16}
+                                  className="is-spinning"
+                                />
+                              ) : (
+                                <RefreshCw size={16} />
+                              )}
+                            </button>
                           )}
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+
+                          <button
+                            type="button"
+                            className="jadwal-action-button jadwal-delete-button"
+                            onClick={() =>
+                              handleDelete(schedule)
+                            }
+                            disabled={
+                              saving ||
+                              isDeleting ||
+                              isResubmitting
+                            }
+                            title="Hapus jadwal"
+                          >
+                            {isDeleting ? (
+                              <RefreshCw
+                                size={16}
+                                className="is-spinning"
+                              />
+                            ) : (
+                              <Trash2 size={16} />
+                            )}
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                })}
               </tbody>
             </table>
           </div>

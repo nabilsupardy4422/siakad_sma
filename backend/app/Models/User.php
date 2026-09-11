@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable(['role_id', 'name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
@@ -29,4 +30,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function teacher(): HasOne
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    public function student(): HasOne
+    {
+        return $this->hasOne(Student::class);
+    }
+
 }

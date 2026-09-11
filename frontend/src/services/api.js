@@ -175,3 +175,131 @@ export async function getScheduleOptions(token) {
 
   return data
 }
+
+export async function getScheduleMonitoring(token) {
+  const response = await fetch(`${API_URL}/schedule-monitoring`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengambil monitoring jadwal.',
+    )
+    error.status = response.status
+    error.errors = data.errors || {}
+    throw error
+  }
+
+  return data
+}
+
+export async function getTeacherSchedules(token) {
+  const response = await fetch(`${API_URL}/teacher-schedules`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengambil jadwal mengajar.',
+    )
+    error.status = response.status
+    error.errors = data.errors || {}
+    throw error
+  }
+
+  return data
+}
+
+export async function getStudentSchedules(token) {
+  const response = await fetch(`${API_URL}/student-schedules`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengambil jadwal pelajaran.',
+    )
+    error.status = response.status
+    error.errors = data.errors || {}
+    throw error
+  }
+
+  return data
+}
+
+export async function approveSchedule(token, scheduleId) {
+  const response = await fetch(`${API_URL}/schedules/${scheduleId}/approve`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Gagal menyetujui jadwal.')
+  }
+
+  return data
+}
+
+export async function rejectSchedule(token, scheduleId) {
+  const response = await fetch(`${API_URL}/schedules/${scheduleId}/reject`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    throw new Error(data.message || 'Gagal menolak jadwal.')
+  }
+
+  return data
+}
+
+export async function resubmitSchedule(token, id) {
+  const response = await fetch(`${API_URL}/schedules/${id}/resubmit`, {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengirim ulang jadwal.',
+    )
+    error.status = response.status
+    error.errors = data.errors || {}
+    throw error
+  }
+
+  return data
+}
