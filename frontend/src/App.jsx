@@ -13,6 +13,7 @@ import WakakurDashboard from './pages/Dashboard/WakakurDashboard'
 import GuruDashboard from './pages/Dashboard/GuruDashboard'
 import WaliKelasDashboard from './pages/Dashboard/WaliKelasDashboard'
 import SiswaDashboard from './pages/Dashboard/SiswaDashboard'
+import JadwalPage from './pages/Jadwal/JadwalPage'
 import './App.css'
 
 function LandingPage() {
@@ -40,6 +41,7 @@ function App() {
         <Route element={<ProtectedRoute allowedRoles={['TU']} />}>
           <Route element={<DashboardLayout />}>
             <Route path="/tu" element={<TuDashboard />} />
+            <Route path="/tu/jadwal" element={<JadwalPage />} />
           </Route>
         </Route>
 

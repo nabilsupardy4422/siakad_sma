@@ -1,0 +1,405 @@
+.jadwal-page {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .jadwal-page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  
+  .jadwal-page-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .jadwal-page-title svg {
+    flex-shrink: 0;
+  }
+  
+  .jadwal-page-title h1 {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.2;
+  }
+  
+  .jadwal-page-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 15px;
+  }
+  
+  .jadwal-page-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .jadwal-primary-button,
+  .jadwal-secondary-button,
+  .jadwal-refresh-button,
+  .jadwal-action-button,
+  .jadwal-close-button {
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+  }
+  
+  .jadwal-primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: 9px;
+    background: #18243d;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .jadwal-primary-button:hover {
+    background: #101a2f;
+  }
+  
+  .jadwal-primary-button:disabled,
+  .jadwal-secondary-button:disabled,
+  .jadwal-refresh-button:disabled,
+  .jadwal-action-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  
+  .jadwal-refresh-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 15px;
+    border: 1px solid #d9e0ea;
+    border-radius: 9px;
+    background: #fff;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .jadwal-refresh-button:hover:not(:disabled) {
+    background: #f8fafc;
+  }
+  
+  .jadwal-card {
+    overflow: hidden;
+    margin-bottom: 24px;
+    border: 1px solid #e5eaf1;
+    border-radius: 14px;
+    background: #fff;
+  }
+  
+  .jadwal-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px;
+    border-bottom: 1px solid #edf1f5;
+  }
+  
+  .jadwal-card-header h2 {
+    margin: 0 0 5px;
+    color: #17233d;
+    font-size: 20px;
+  }
+  
+  .jadwal-card-header span {
+    color: #64748b;
+    font-size: 13px;
+  }
+  
+  .jadwal-form-card {
+    padding-bottom: 4px;
+  }
+  
+  .jadwal-close-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #f1f5f9;
+    color: #475569;
+  }
+  
+  .jadwal-close-button:hover:not(:disabled) {
+    background: #e2e8f0;
+  }
+  
+  .jadwal-form {
+    padding: 22px;
+  }
+  
+  .jadwal-form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+  
+  .jadwal-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .jadwal-form-field label {
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .jadwal-form-field input,
+  .jadwal-form-field select {
+    width: 100%;
+    min-height: 42px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    border: 1px solid #d8dee8;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    color: #1e293b;
+    font: inherit;
+    font-size: 14px;
+  }
+  
+  .jadwal-form-field input:focus,
+  .jadwal-form-field select:focus {
+    border-color: #18243d;
+    box-shadow: 0 0 0 3px rgba(24, 36, 61, 0.08);
+  }
+  
+  .jadwal-form-field input:disabled,
+  .jadwal-form-field select:disabled {
+    background: #f8fafc;
+    cursor: not-allowed;
+  }
+  
+  .jadwal-field-error {
+    color: #dc2626;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .jadwal-form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #edf1f5;
+  }
+  
+  .jadwal-secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border: 1px solid #d8dee8;
+    border-radius: 9px;
+    background: #fff;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .jadwal-secondary-button:hover:not(:disabled) {
+    background: #f8fafc;
+  }
+  
+  .jadwal-alert {
+    margin-bottom: 18px;
+    padding: 12px 15px;
+    border-radius: 9px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .jadwal-alert-error {
+    border: 1px solid #fecaca;
+    background: #fef2f2;
+    color: #b91c1c;
+  }
+  
+  .jadwal-alert-success {
+    border: 1px solid #bbf7d0;
+    background: #f0fdf4;
+    color: #15803d;
+  }
+  
+  .jadwal-state {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 180px;
+    padding: 24px;
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  .jadwal-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .jadwal-table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+  }
+  
+  .jadwal-table th {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5eaf1;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  .jadwal-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #edf1f5;
+    color: #334155;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  
+  .jadwal-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  
+  .jadwal-table tbody tr:hover {
+    background: #fafbfc;
+  }
+  
+  .jadwal-subject {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .jadwal-subject strong {
+    color: #17233d;
+    font-weight: 600;
+  }
+  
+  .jadwal-subject small {
+    color: #64748b;
+    font-size: 12px;
+  }
+  
+  .jadwal-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 9px;
+    border-radius: 999px;
+    background: #f1f5f9;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  
+  .jadwal-row-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  
+  .jadwal-action-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 7px;
+  }
+  
+  .jadwal-edit-button {
+    background: #f1f5f9;
+    color: #334155;
+  }
+  
+  .jadwal-edit-button:hover:not(:disabled) {
+    background: #e2e8f0;
+  }
+  
+  .jadwal-delete-button {
+    background: #fef2f2;
+    color: #dc2626;
+  }
+  
+  .jadwal-delete-button:hover:not(:disabled) {
+    background: #fee2e2;
+  }
+  
+  .is-spinning {
+    animation: jadwal-spin 0.9s linear infinite;
+  }
+  
+  @keyframes jadwal-spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .jadwal-page-header {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .jadwal-page-actions {
+      width: 100%;
+    }
+  
+    .jadwal-page-actions button {
+      flex: 1;
+    }
+  
+    .jadwal-form-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .jadwal-form-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .jadwal-form-actions {
+      flex-direction: column-reverse;
+    }
+  
+    .jadwal-form-actions button {
+      width: 100%;
+    }
+  }
