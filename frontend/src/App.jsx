@@ -13,7 +13,11 @@ import WakakurDashboard from './pages/Dashboard/WakakurDashboard'
 import GuruDashboard from './pages/Dashboard/GuruDashboard'
 import WaliKelasDashboard from './pages/Dashboard/WaliKelasDashboard'
 import SiswaDashboard from './pages/Dashboard/SiswaDashboard'
+import JadwalPage from './pages/Jadwal/JadwalPage'
 import './App.css'
+import ScheduleMonitoringPage from './pages/JadwalWorkflow/ScheduleMonitoringPage'
+import TeacherSchedulePage from './pages/JadwalWorkflow/TeacherSchedulePage'
+import StudentSchedulePage from './pages/JadwalWorkflow/StudentSchedulePage'
 
 function LandingPage() {
   return (
@@ -40,24 +44,33 @@ function App() {
         <Route element={<ProtectedRoute allowedRoles={['TU']} />}>
           <Route element={<DashboardLayout />}>
             <Route path="/tu" element={<TuDashboard />} />
+            <Route path="/tu/jadwal" element={<JadwalPage />} />
           </Route>
         </Route>
 
         <Route element={<ProtectedRoute allowedRoles={['Wakakur']} />}>
           <Route element={<DashboardLayout />}>
             <Route path="/wakakur" element={<WakakurDashboard />} />
+            <Route
+              path="/wakakur/jadwal"
+              element={<ScheduleMonitoringPage />}
+            />
           </Route>
         </Route>
 
         <Route
-          element={
-            <ProtectedRoute allowedRoles={['Guru Mata Pelajaran']} />
-          }
-        >
-          <Route element={<DashboardLayout />}>
-            <Route path="/guru" element={<GuruDashboard />} />
+            element={
+              <ProtectedRoute allowedRoles={['Guru Mata Pelajaran']} />
+            }
+          >
+            <Route element={<DashboardLayout />}>
+              <Route path="/guru" element={<GuruDashboard />} />
+              <Route
+                path="/guru/jadwal"
+                element={<TeacherSchedulePage />}
+              />
+            </Route>
           </Route>
-        </Route>
 
         <Route element={<ProtectedRoute allowedRoles={['Wali Kelas']} />}>
           <Route element={<DashboardLayout />}>
@@ -68,6 +81,10 @@ function App() {
         <Route element={<ProtectedRoute allowedRoles={['Siswa']} />}>
           <Route element={<DashboardLayout />}>
             <Route path="/siswa" element={<SiswaDashboard />} />
+            <Route
+              path="/siswa/jadwal"
+              element={<StudentSchedulePage />}
+            />
           </Route>
         </Route>
       </Routes>
