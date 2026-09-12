@@ -19,6 +19,7 @@ import TeacherSchedulePage from './pages/JadwalWorkflow/TeacherSchedulePage'
 import StudentSchedulePage from './pages/JadwalWorkflow/StudentSchedulePage'
 import AttendancePage from './pages/Absensi/AttendancePage'
 import StudentAttendancePage from './pages/Absensi/StudentAttendancePage'
+import WaliKelasAttendancePage from './pages/Absensi/WaliKelasAttendancePage'
 import './App.css'
 
 function LandingPage() {
@@ -91,6 +92,11 @@ function App() {
               path="/wali-kelas"
               element={<WaliKelasDashboard />}
             />
+
+            <Route
+              path="/wali-kelas/absensi"
+              element={<WaliKelasAttendancePage />}
+            />
           </Route>
         </Route>
 
@@ -116,4 +122,3 @@ function App() {
 }
 
 export default App
-

@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Role;
+use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -42,7 +43,7 @@ class UserSeeder extends Seeder
         foreach ($users as $userData) {
             $role = Role::where('name', $userData['role'])->firstOrFail();
 
-            User::updateOrCreate(
+            $user = User::updateOrCreate(
                 ['email' => $userData['email']],
                 [
                     'role_id' => $role->id,
@@ -50,6 +51,20 @@ class UserSeeder extends Seeder
                     'password' => Hash::make('password123'),
                 ]
             );
+
+            if (in_array($userData['role'], [
+                'Guru Mata Pelajaran',
+                'Wali Kelas',
+            ])) {
+                Teacher::updateOrCreate(
+                    ['user_id' => $user->id],
+                    [
+                        'nip' => $userData['role'] === 'Wali Kelas'
+                            ? 'TEST003'
+                            : 'TEST001',
+                    ]
+                );
+            }
         }
     }
 }

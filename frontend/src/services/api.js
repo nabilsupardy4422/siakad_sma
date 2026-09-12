@@ -380,3 +380,28 @@ export async function getStudentAttendance(token) {
 
   return data
 }
+
+export async function getWaliKelasAttendance(token) {
+  const response = await fetch(`${API_URL}/wali-kelas/attendance`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  })
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengambil rekap presensi.',
+    )
+
+    error.status = response.status
+    error.errors = data.errors || {}
+
+    throw error
+  }
+
+  return data
+}
