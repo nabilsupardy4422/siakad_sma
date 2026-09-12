@@ -5,6 +5,7 @@ use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ScheduleWorkflowController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\StudentAttendanceController;
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -27,7 +28,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/student-schedules', [ScheduleWorkflowController::class, 'studentSchedules'])
         ->middleware('role:Siswa');
 
-        Route::post('/schedules/{schedule}/approve', [ScheduleWorkflowController::class, 'approve'])
+    Route::get('/student-attendance', [StudentAttendanceController::class, 'index'])
+        ->middleware('role:Siswa');
+
+    Route::post('/schedules/{schedule}/approve', [ScheduleWorkflowController::class, 'approve'])
         ->middleware('role:Wakakur');
 
     Route::post('/schedules/{schedule}/reject', [ScheduleWorkflowController::class, 'reject'])
