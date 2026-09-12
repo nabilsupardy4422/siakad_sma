@@ -24,10 +24,14 @@ class AcademicSeeder extends Seeder
             ]
         );
 
-        ClassModel::where('name', 'X IPA 1')
-            ->where('level', 'X')
-            ->update([
+        ClassModel::updateOrCreate(
+            [
+                'name' => 'X IPA 1',
+                'level' => 'X',
+            ],
+            [
                 'wali_kelas_id' => $waliKelasTeacher->id,
-            ]);
+            ]
+        );
     }
 }
