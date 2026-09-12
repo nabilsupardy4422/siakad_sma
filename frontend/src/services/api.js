@@ -405,3 +405,99 @@ export async function getWaliKelasAttendance(token) {
 
   return data
 }
+
+export async function getGrades(token, scheduleId) {
+  const response = await fetch(
+    `${API_URL}/schedules/${scheduleId}/grades`,
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengambil data nilai.',
+    )
+
+    error.status = response.status
+    error.errors = data.errors || {}
+
+    throw error
+  }
+
+  return data
+}
+
+export async function saveGrades(
+  token,
+  scheduleId,
+  gradeData,
+) {
+  const response = await fetch(
+    `${API_URL}/schedules/${scheduleId}/grades`,
+    {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(gradeData),
+    },
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal menyimpan nilai.',
+    )
+
+    error.status = response.status
+    error.errors = data.errors || {}
+
+    throw error
+  }
+
+  return data
+}
+
+export async function updateGrade(
+  token,
+  gradeId,
+  gradeData,
+) {
+  const response = await fetch(
+    `${API_URL}/grades/${gradeId}`,
+    {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(gradeData),
+    },
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal memperbarui nilai.',
+    )
+
+    error.status = response.status
+    error.errors = data.errors || {}
+
+    throw error
+  }
+
+  return data
+}

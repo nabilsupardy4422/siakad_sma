@@ -6,6 +6,7 @@ use App\Http\Controllers\ScheduleWorkflowController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\StudentAttendanceController;
 use App\Http\Controllers\WaliKelasAttendanceController;
+use App\Http\Controllers\GradeController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -44,6 +45,7 @@ Route::middleware('auth:sanctum')->group(function () {
     )->middleware('role:Guru Mata Pelajaran');
 
     Route::middleware('role:Guru Mata Pelajaran')->group(function () {
+        // Absensi
         Route::get('/schedules/{schedule}/attendance', [
             AttendanceController::class,
             'index',
@@ -52,6 +54,22 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/schedules/{schedule}/attendance', [
             AttendanceController::class,
             'store',
+        ]);
+
+        // Penilaian
+        Route::get('/schedules/{schedule}/grades', [
+            GradeController::class,
+            'index',
+        ]);
+
+        Route::post('/schedules/{schedule}/grades', [
+            GradeController::class,
+            'store',
+        ]);
+
+        Route::put('/grades/{grade}', [
+            GradeController::class,
+            'update',
         ]);
     });
 

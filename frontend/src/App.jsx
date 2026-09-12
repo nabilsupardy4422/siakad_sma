@@ -20,6 +20,7 @@ import StudentSchedulePage from './pages/JadwalWorkflow/StudentSchedulePage'
 import AttendancePage from './pages/Absensi/AttendancePage'
 import StudentAttendancePage from './pages/Absensi/StudentAttendancePage'
 import WaliKelasAttendancePage from './pages/Absensi/WaliKelasAttendancePage'
+import GradePage from './pages/Penilaian/GradePage'
 import './App.css'
 
 function LandingPage() {
@@ -67,7 +68,9 @@ function App() {
         {/* Guru Mata Pelajaran */}
         <Route
           element={
-            <ProtectedRoute allowedRoles={['Guru Mata Pelajaran']} />
+            <ProtectedRoute
+              allowedRoles={['Guru Mata Pelajaran']}
+            />
           }
         >
           <Route element={<DashboardLayout />}>
@@ -81,6 +84,11 @@ function App() {
             <Route
               path="/guru/absensi/:scheduleId"
               element={<AttendancePage />}
+            />
+
+            <Route
+              path="/guru/penilaian/:scheduleId"
+              element={<GradePage />}
             />
           </Route>
         </Route>

@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
-import { ClipboardCheck } from 'lucide-react'
+import {
+  ClipboardCheck,
+  ClipboardList,
+} from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { getTeacherSchedules } from '../../services/api'
 import { useAuth } from '../../context/AuthContext'
@@ -95,18 +98,33 @@ function TeacherSchedulePage() {
 
                     <td>
                       {schedule.status === 'approved' ? (
-                        <button
-                          type="button"
-                          className="jadwal-primary-button"
-                          onClick={() =>
-                            navigate(
-                              `/guru/absensi/${schedule.id}`,
-                            )
-                          }
-                        >
-                          <ClipboardCheck size={16} />
-                          Absensi
-                        </button>
+                        <div className="jadwal-row-actions">
+                          <button
+                            type="button"
+                            className="jadwal-primary-button"
+                            onClick={() =>
+                              navigate(
+                                `/guru/absensi/${schedule.id}`,
+                              )
+                            }
+                          >
+                            <ClipboardCheck size={16} />
+                            Absensi
+                          </button>
+
+                          <button
+                            type="button"
+                            className="jadwal-primary-button"
+                            onClick={() =>
+                              navigate(
+                                `/guru/penilaian/${schedule.id}`,
+                              )
+                            }
+                          >
+                            <ClipboardList size={16} />
+                            Penilaian
+                          </button>
+                        </div>
                       ) : (
                         <span>-</span>
                       )}
