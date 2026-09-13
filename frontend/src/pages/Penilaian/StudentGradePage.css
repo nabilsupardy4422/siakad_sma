@@ -1,0 +1,346 @@
+.student-grade-page {
+    width: 100%;
+  }
+  
+  .student-grade-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  
+  .student-grade-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  
+  .student-grade-title {
+    margin: 0;
+    color: #0f172a;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  
+  .student-grade-description {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  .student-grade-refresh {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 15px;
+    border: 1px solid #dbe3ee;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+  
+  .student-grade-refresh:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+  }
+  
+  .student-grade-refresh:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+  
+  .student-grade-spin {
+    animation: student-grade-spin 0.9s linear infinite;
+  }
+  
+  @keyframes student-grade-spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .student-grade-alert {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 14px;
+  }
+  
+  .student-grade-state {
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #64748b;
+  }
+  
+  .student-grade-state p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .student-grade-profile {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 20px 22px;
+    border: 1px solid #dbe3ee;
+    border-radius: 14px;
+    background: #ffffff;
+  }
+  
+  .student-grade-profile-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 11px;
+    background: #f1f5f9;
+    color: #334155;
+  }
+  
+  .student-grade-profile-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  
+  .student-grade-profile-main h2 {
+    margin: 0;
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .student-grade-profile-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-top: 6px;
+    color: #64748b;
+    font-size: 13px;
+  }
+  
+  .student-grade-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .student-grade-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid #dbe3ee;
+    border-radius: 14px;
+    background: #ffffff;
+  }
+  
+  .student-grade-stat-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #f1f5f9;
+    color: #334155;
+  }
+  
+  .student-grade-stat-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #64748b;
+    font-size: 12px;
+  }
+  
+  .student-grade-stat-value {
+    display: block;
+    color: #0f172a;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+  
+  .student-grade-table-card {
+    overflow: hidden;
+    border: 1px solid #dbe3ee;
+    border-radius: 14px;
+    background: #ffffff;
+  }
+  
+  .student-grade-table-header {
+    padding: 20px 22px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .student-grade-table-title {
+    margin: 0;
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .student-grade-table-description {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 13px;
+  }
+  
+  .student-grade-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .student-grade-table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+  }
+  
+  .student-grade-table th {
+    padding: 13px 16px;
+    border-bottom: 1px solid #dbe3ee;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  .student-grade-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #eef2f7;
+    color: #475569;
+    font-size: 13px;
+    vertical-align: middle;
+  }
+  
+  .student-grade-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .student-grade-table tbody tr:hover {
+    background: #fafcff;
+  }
+  
+  .student-grade-subject strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+  
+  .student-grade-code {
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  
+  .student-grade-teacher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .student-grade-teacher-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 7px;
+    background: #f1f5f9;
+    color: #64748b;
+  }
+  
+  .student-grade-score {
+    display: inline-flex;
+    min-width: 48px;
+    justify-content: center;
+    padding: 5px 10px;
+    border-radius: 7px;
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+  }
+  
+  .student-grade-empty {
+    height: 240px;
+    text-align: center;
+  }
+  
+  .student-grade-empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    color: #94a3b8;
+  }
+  
+  .student-grade-empty-content strong {
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  .student-grade-empty-content span {
+    max-width: 420px;
+    color: #94a3b8;
+    font-size: 12px;
+  }
+  
+  @media (max-width: 700px) {
+    .student-grade-header {
+      flex-direction: column;
+    }
+  
+    .student-grade-title {
+      font-size: 26px;
+    }
+  
+    .student-grade-refresh {
+      width: 100%;
+    }
+  
+    .student-grade-summary {
+      grid-template-columns: 1fr;
+    }
+  
+    .student-grade-profile {
+      align-items: flex-start;
+    }
+  }

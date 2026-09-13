@@ -20,6 +20,8 @@ import StudentSchedulePage from './pages/JadwalWorkflow/StudentSchedulePage'
 import AttendancePage from './pages/Absensi/AttendancePage'
 import StudentAttendancePage from './pages/Absensi/StudentAttendancePage'
 import WaliKelasAttendancePage from './pages/Absensi/WaliKelasAttendancePage'
+import WaliKelasGradePage from './pages/Penilaian/WaliKelasGradePage'
+import StudentGradePage from './pages/Penilaian/StudentGradePage'
 import GradePage from './pages/Penilaian/GradePage'
 import './App.css'
 
@@ -105,6 +107,11 @@ function App() {
               path="/wali-kelas/absensi"
               element={<WaliKelasAttendancePage />}
             />
+
+            <Route
+              path="/wali-kelas/nilai"
+              element={<WaliKelasGradePage />}
+            />
           </Route>
         </Route>
 
@@ -121,6 +128,11 @@ function App() {
             <Route
               path="/siswa/absensi"
               element={<StudentAttendancePage />}
+            />
+
+            <Route
+              path="/siswa/nilai"
+              element={<StudentGradePage />}
             />
           </Route>
         </Route>

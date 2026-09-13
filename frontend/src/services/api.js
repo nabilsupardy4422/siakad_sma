@@ -501,3 +501,59 @@ export async function updateGrade(
 
   return data
 }
+
+export async function getWaliKelasGrades(token) {
+  const response = await fetch(
+    `${API_URL}/wali-kelas/grades`,
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengambil rekap nilai Wali Kelas.',
+    )
+
+    error.status = response.status
+    error.errors = data.errors || {}
+
+    throw error
+  }
+
+  return data
+}
+
+export async function getStudentGrades(token) {
+  const response = await fetch(
+    `${API_URL}/student-grades`,
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message || 'Gagal mengambil nilai siswa.',
+    )
+
+    error.status = response.status
+    error.errors = data.errors || {}
+
+    throw error
+  }
+
+  return data
+}

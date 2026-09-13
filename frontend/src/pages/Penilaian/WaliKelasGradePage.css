@@ -1,0 +1,349 @@
+.wali-grade-page {
+    width: 100%;
+  }
+  
+  .wali-grade-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  
+  .wali-grade-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  
+  .wali-grade-title {
+    margin: 0;
+    color: #0f172a;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  
+  .wali-grade-description {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  .wali-grade-refresh {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 15px;
+    border: 1px solid #dbe3ee;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
+  }
+  
+  .wali-grade-refresh:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: #cbd5e1;
+  }
+  
+  .wali-grade-refresh:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+  }
+  
+  .wali-grade-spin {
+    animation: wali-grade-spin 0.9s linear infinite;
+  }
+  
+  @keyframes wali-grade-spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .wali-grade-alert {
+    margin-bottom: 20px;
+    padding: 14px 16px;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 14px;
+  }
+  
+  .wali-grade-state {
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #64748b;
+  }
+  
+  .wali-grade-state p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .wali-grade-class-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 20px;
+    padding: 22px 24px;
+    border: 1px solid #dbe3ee;
+    border-radius: 14px;
+    background: #ffffff;
+  }
+  
+  .wali-grade-info {
+    min-width: 0;
+  }
+  
+  .wali-grade-info-label {
+    display: block;
+    margin-bottom: 7px;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+  
+  .wali-grade-info-value {
+    display: block;
+    overflow: hidden;
+    color: #0f172a;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .wali-grade-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .wali-grade-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid #dbe3ee;
+    border-radius: 14px;
+    background: #ffffff;
+  }
+  
+  .wali-grade-stat-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #f1f5f9;
+    color: #334155;
+  }
+  
+  .wali-grade-stat-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #64748b;
+    font-size: 12px;
+  }
+  
+  .wali-grade-stat-value {
+    display: block;
+    color: #0f172a;
+    font-size: 22px;
+    line-height: 1.2;
+  }
+  
+  .wali-grade-table-card {
+    overflow: hidden;
+    border: 1px solid #dbe3ee;
+    border-radius: 14px;
+    background: #ffffff;
+  }
+  
+  .wali-grade-table-header {
+    padding: 20px 22px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .wali-grade-table-title {
+    margin: 0;
+    color: #0f172a;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .wali-grade-table-description {
+    margin: 5px 0 0;
+    color: #64748b;
+    font-size: 13px;
+  }
+  
+  .wali-grade-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .wali-grade-table {
+    width: 100%;
+    min-width: 850px;
+    border-collapse: collapse;
+  }
+  
+  .wali-grade-table th {
+    padding: 13px 16px;
+    border-bottom: 1px solid #dbe3ee;
+    background: #f8fafc;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  .wali-grade-table td {
+    padding: 15px 16px;
+    border-bottom: 1px solid #eef2f7;
+    color: #475569;
+    font-size: 13px;
+    vertical-align: middle;
+  }
+  
+  .wali-grade-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .wali-grade-table tbody tr:hover {
+    background: #fafcff;
+  }
+  
+  .wali-grade-nis {
+    color: #475569;
+    font-weight: 600;
+  }
+  
+  .wali-grade-student {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #0f172a;
+  }
+  
+  .wali-grade-student-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background: #f1f5f9;
+    color: #64748b;
+  }
+  
+  .wali-grade-subject {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .wali-grade-subject strong {
+    color: #0f172a;
+    font-weight: 600;
+  }
+  
+  .wali-grade-subject span {
+    color: #94a3b8;
+    font-size: 11px;
+  }
+  
+  .wali-grade-score {
+    display: inline-flex;
+    min-width: 42px;
+    justify-content: center;
+    padding: 5px 9px;
+    border-radius: 7px;
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: 700;
+  }
+  
+  .wali-grade-empty {
+    height: 240px;
+    text-align: center;
+  }
+  
+  .wali-grade-empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    color: #94a3b8;
+  }
+  
+  .wali-grade-empty-content strong {
+    color: #64748b;
+    font-size: 14px;
+  }
+  
+  .wali-grade-empty-content span {
+    max-width: 420px;
+    color: #94a3b8;
+    font-size: 12px;
+  }
+  
+  @media (max-width: 900px) {
+    .wali-grade-class-card {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+  
+    .wali-grade-summary {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .wali-grade-header {
+      flex-direction: column;
+    }
+  
+    .wali-grade-title {
+      font-size: 26px;
+    }
+  
+    .wali-grade-refresh {
+      width: 100%;
+    }
+  
+    .wali-grade-class-card {
+      padding: 18px;
+    }
+  }

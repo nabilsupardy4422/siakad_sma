@@ -7,6 +7,8 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\StudentAttendanceController;
 use App\Http\Controllers\WaliKelasAttendanceController;
 use App\Http\Controllers\GradeController;
+use App\Http\Controllers\StudentGradeController;
+use App\Http\Controllers\WaliKelasGradeController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -95,6 +97,18 @@ Route::middleware('auth:sanctum')->group(function () {
         '/wali-kelas/attendance',
         [WaliKelasAttendanceController::class, 'index']
     )->middleware('role:Wali Kelas');
+
+    // Wali Kelas - Penilaian
+    Route::get(
+        '/wali-kelas/grades',
+        [WaliKelasGradeController::class, 'index']
+    )->middleware('role:Wali Kelas');
+
+    // Siswa - Penilaian
+    Route::get(
+        '/student-grades',
+        [StudentGradeController::class, 'index']
+    )->middleware('role:Siswa');
 });
 
 Route::get('/test', function () {
