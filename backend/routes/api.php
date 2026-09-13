@@ -9,6 +9,7 @@ use App\Http\Controllers\WaliKelasAttendanceController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\StudentGradeController;
 use App\Http\Controllers\WaliKelasGradeController;
+use App\Http\Controllers\WakakurGradeController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
@@ -25,20 +26,18 @@ Route::middleware('auth:sanctum')->group(function () {
     });
 
     // Wakakur
-    Route::get(
-        '/schedule-monitoring',
-        [ScheduleWorkflowController::class, 'monitoring']
-    )->middleware('role:Wakakur');
+    Route::get('/schedule-monitoring', [ScheduleWorkflowController::class, 'monitoring'])
+    ->middleware('role:Wakakur');
 
-    Route::post(
-        '/schedules/{schedule}/approve',
-        [ScheduleWorkflowController::class, 'approve']
-    )->middleware('role:Wakakur');
+    Route::post('/schedules/{schedule}/approve', [ScheduleWorkflowController::class, 'approve'])
+    ->middleware('role:Wakakur');
 
-    Route::post(
-        '/schedules/{schedule}/reject',
-        [ScheduleWorkflowController::class, 'reject']
-    )->middleware('role:Wakakur');
+    Route::post('/schedules/{schedule}/reject', [ScheduleWorkflowController::class, 'reject'])
+    ->middleware('role:Wakakur');
+
+    // Wakakur - Monitoring Nilai
+    Route::get('/wakakur/grade-monitoring', [WakakurGradeController::class, 'index'])
+    ->middleware('role:Wakakur');
 
     // Guru Mata Pelajaran
     Route::get(

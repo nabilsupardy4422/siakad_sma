@@ -1,0 +1,331 @@
+.wakakur-grade-page {
+    width: 100%;
+    padding: 32px;
+    box-sizing: border-box;
+  }
+  
+  .wakakur-grade-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+  
+  .wakakur-grade-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+  
+  .wakakur-grade-title {
+    margin: 0;
+    color: #0f2747;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+  
+  .wakakur-grade-description {
+    margin: 8px 0 0;
+    color: #64748b;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  
+  .wakakur-grade-refresh {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 16px;
+    border: 1px solid #d7dee8;
+    border-radius: 9px;
+    background: #ffffff;
+    color: #17243d;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+  }
+  
+  .wakakur-grade-refresh:hover:not(:disabled) {
+    background: #f8fafc;
+    border-color: #c5cedb;
+  }
+  
+  .wakakur-grade-refresh:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .wakakur-grade-spin {
+    animation: wakakur-grade-spin 1s linear infinite;
+  }
+  
+  @keyframes wakakur-grade-spin {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .wakakur-grade-alert {
+    margin-bottom: 20px;
+    padding: 13px 16px;
+    border: 1px solid #fecaca;
+    border-radius: 9px;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .wakakur-grade-state {
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #64748b;
+  }
+  
+  .wakakur-grade-state p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .wakakur-grade-summary {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .wakakur-grade-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-height: 100px;
+    padding: 18px;
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+    background: #ffffff;
+    box-sizing: border-box;
+  }
+  
+  .wakakur-grade-stat-icon {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #f1f5f9;
+    color: #17243d;
+  }
+  
+  .wakakur-grade-stat-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #64748b;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  
+  .wakakur-grade-stat-value {
+    display: block;
+    color: #0f2747;
+    font-size: 24px;
+    line-height: 1.1;
+  }
+  
+  .wakakur-grade-table-card {
+    overflow: hidden;
+    border: 1px solid #e1e7ef;
+    border-radius: 12px;
+    background: #ffffff;
+  }
+  
+  .wakakur-grade-table-header {
+    padding: 22px 20px;
+    border-bottom: 1px solid #e5eaf0;
+  }
+  
+  .wakakur-grade-table-title {
+    margin: 0;
+    color: #0f2747;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .wakakur-grade-table-description {
+    margin: 6px 0 0;
+    color: #64748b;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .wakakur-grade-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .wakakur-grade-table {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: collapse;
+  }
+  
+  .wakakur-grade-table th,
+  .wakakur-grade-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #edf1f5;
+    text-align: left;
+    vertical-align: middle;
+    color: #334155;
+    font-size: 13px;
+  }
+  
+  .wakakur-grade-table th {
+    background: #f8fafc;
+    color: #475569;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  
+  .wakakur-grade-table tbody tr:last-child td {
+    border-bottom: 0;
+  }
+  
+  .wakakur-grade-table tbody tr:hover {
+    background: #fafcff;
+  }
+  
+  .wakakur-grade-class,
+  .wakakur-grade-subject,
+  .wakakur-grade-teacher {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  
+  .wakakur-grade-class strong,
+  .wakakur-grade-subject strong,
+  .wakakur-grade-teacher strong {
+    color: #17243d;
+    font-weight: 600;
+  }
+  
+  .wakakur-grade-class span,
+  .wakakur-grade-subject span,
+  .wakakur-grade-teacher span {
+    color: #64748b;
+    font-size: 11px;
+  }
+  
+  .wakakur-grade-teacher {
+    flex-direction: row;
+    align-items: center;
+    gap: 9px;
+    min-width: 150px;
+  }
+  
+  .wakakur-grade-teacher-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #f1f5f9;
+    color: #475569;
+  }
+  
+  .wakakur-grade-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  
+  .wakakur-grade-badge-success {
+    background: #dcfce7;
+    color: #15803d;
+  }
+  
+  .wakakur-grade-badge-warning {
+    background: #fef3c7;
+    color: #b45309;
+  }
+  
+  .wakakur-grade-empty {
+    height: 260px;
+    text-align: center !important;
+  }
+  
+  .wakakur-grade-empty-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #64748b;
+  }
+  
+  .wakakur-grade-empty-content strong {
+    color: #334155;
+    font-size: 14px;
+  }
+  
+  .wakakur-grade-empty-content span {
+    max-width: 400px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 1100px) {
+    .wakakur-grade-summary {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .wakakur-grade-page {
+      padding: 20px;
+    }
+  
+    .wakakur-grade-header {
+      flex-direction: column;
+    }
+  
+    .wakakur-grade-refresh {
+      width: 100%;
+    }
+  
+    .wakakur-grade-summary {
+      grid-template-columns: 1fr;
+    }
+  
+    .wakakur-grade-title {
+      font-size: 26px;
+    }
+  }

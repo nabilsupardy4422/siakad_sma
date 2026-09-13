@@ -22,6 +22,8 @@ import StudentAttendancePage from './pages/Absensi/StudentAttendancePage'
 import WaliKelasAttendancePage from './pages/Absensi/WaliKelasAttendancePage'
 import WaliKelasGradePage from './pages/Penilaian/WaliKelasGradePage'
 import StudentGradePage from './pages/Penilaian/StudentGradePage'
+import TeacherGradeViewPage from './pages/Penilaian/TeacherGradeViewPage'
+import WakakurGradeMonitoringPage from './pages/Penilaian/WakakurGradeMonitoringPage'
 import GradePage from './pages/Penilaian/GradePage'
 import './App.css'
 
@@ -29,12 +31,14 @@ function LandingPage() {
   return (
     <div className="app">
       <Navbar />
+
       <main>
         <Hero />
         <Features />
         <About />
         <CTA />
       </main>
+
       <Footer />
     </div>
   )
@@ -44,30 +48,64 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+
         {/* Landing Page */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
 
-        {/* TU */}
+        {/* =====================================================
+            TU
+        ====================================================== */}
         <Route element={<ProtectedRoute allowedRoles={['TU']} />}>
           <Route element={<DashboardLayout />}>
-            <Route path="/tu" element={<TuDashboard />} />
-            <Route path="/tu/jadwal" element={<JadwalPage />} />
-          </Route>
-        </Route>
-
-        {/* Wakakur */}
-        <Route element={<ProtectedRoute allowedRoles={['Wakakur']} />}>
-          <Route element={<DashboardLayout />}>
-            <Route path="/wakakur" element={<WakakurDashboard />} />
             <Route
-              path="/wakakur/jadwal"
-              element={<ScheduleMonitoringPage />}
+              path="/tu"
+              element={<TuDashboard />}
+            />
+
+            <Route
+              path="/tu/jadwal"
+              element={<JadwalPage />}
             />
           </Route>
         </Route>
 
-        {/* Guru Mata Pelajaran */}
+        {/* =====================================================
+            WAKAKUR
+        ====================================================== */}
+        <Route element={<ProtectedRoute allowedRoles={['Wakakur']} />}>
+          <Route element={<DashboardLayout />}>
+
+            {/* Dashboard Wakakur */}
+            <Route
+              path="/wakakur"
+              element={<WakakurDashboard />}
+            />
+
+            {/* Jadwal */}
+            <Route
+              path="/wakakur/jadwal"
+              element={<ScheduleMonitoringPage />}
+            />
+
+            {/* Monitoring KBM */}
+            <Route
+              path="/wakakur/monitoring"
+              element={<ScheduleMonitoringPage />}
+            />
+
+            {/* Evaluasi Akademik / Monitoring Nilai */}
+            <Route
+              path="/wakakur/evaluasi"
+              element={<WakakurGradeMonitoringPage />}
+            />
+
+          </Route>
+        </Route>
+
+        {/* =====================================================
+            GURU MATA PELAJARAN
+        ====================================================== */}
         <Route
           element={
             <ProtectedRoute
@@ -76,66 +114,108 @@ function App() {
           }
         >
           <Route element={<DashboardLayout />}>
-            <Route path="/guru" element={<GuruDashboard />} />
 
+            {/* Dashboard Guru */}
+            <Route
+              path="/guru"
+              element={<GuruDashboard />}
+            />
+
+            {/* Jadwal Mengajar Guru */}
             <Route
               path="/guru/jadwal"
               element={<TeacherSchedulePage />}
             />
 
+            {/* =================================================
+                ABSENSI GURU
+            ================================================== */}
             <Route
               path="/guru/absensi/:scheduleId"
               element={<AttendancePage />}
             />
 
+            {/* =================================================
+                PENILAIAN GURU
+                Core input/update milik Nabil
+            ================================================== */}
+
+            {/* Input / Update Nilai */}
             <Route
               path="/guru/penilaian/:scheduleId"
               element={<GradePage />}
             />
+
+            {/* Read-only Grade View / Monitoring
+                Bagian Claudio */}
+            <Route
+              path="/guru/penilaian/:scheduleId/view"
+              element={<TeacherGradeViewPage />}
+            />
+
           </Route>
         </Route>
 
-        {/* Wali Kelas */}
+        {/* =====================================================
+            WALI KELAS
+        ====================================================== */}
         <Route element={<ProtectedRoute allowedRoles={['Wali Kelas']} />}>
           <Route element={<DashboardLayout />}>
+
+            {/* Dashboard Wali Kelas */}
             <Route
               path="/wali-kelas"
               element={<WaliKelasDashboard />}
             />
 
+            {/* Rekap Absensi */}
             <Route
               path="/wali-kelas/absensi"
               element={<WaliKelasAttendancePage />}
             />
 
+            {/* Rekap Nilai */}
             <Route
               path="/wali-kelas/nilai"
               element={<WaliKelasGradePage />}
             />
+
           </Route>
         </Route>
 
-        {/* Siswa */}
+        {/* =====================================================
+            SISWA
+        ====================================================== */}
         <Route element={<ProtectedRoute allowedRoles={['Siswa']} />}>
           <Route element={<DashboardLayout />}>
-            <Route path="/siswa" element={<SiswaDashboard />} />
 
+            {/* Dashboard Siswa */}
+            <Route
+              path="/siswa"
+              element={<SiswaDashboard />}
+            />
+
+            {/* Jadwal Siswa */}
             <Route
               path="/siswa/jadwal"
               element={<StudentSchedulePage />}
             />
 
+            {/* Riwayat Absensi */}
             <Route
               path="/siswa/absensi"
               element={<StudentAttendancePage />}
             />
 
+            {/* Nilai Siswa */}
             <Route
               path="/siswa/nilai"
               element={<StudentGradePage />}
             />
+
           </Route>
         </Route>
+
       </Routes>
     </BrowserRouter>
   )

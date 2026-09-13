@@ -530,6 +530,35 @@ export async function getWaliKelasGrades(token) {
   return data
 }
 
+export async function getWakakurGradeMonitoring(token) {
+  const response = await fetch(
+    `${API_URL}/wakakur/grade-monitoring`,
+    {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    const error = new Error(
+      data.message ||
+        'Gagal mengambil monitoring nilai Wakakur.',
+    )
+
+    error.status = response.status
+    error.errors = data.errors || {}
+
+    throw error
+  }
+
+  return data
+}
+
 export async function getStudentGrades(token) {
   const response = await fetch(
     `${API_URL}/student-grades`,
