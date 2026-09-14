@@ -199,6 +199,32 @@ export async function getScheduleMonitoring(token) {
   return data
 }
 
+export async function getWakakurKbmMonitoring(token, date) {
+  const query = date
+    ? `?date=${encodeURIComponent(date)}`
+    : ''
+
+  const response = await fetch(
+    `${API_URL}/wakakur/kbm-monitoring${query}`,
+    {
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  )
+
+  const data = await response.json()
+
+  if (!response.ok) {
+    throw new Error(
+      data.message || 'Gagal mengambil monitoring KBM.'
+    )
+  }
+
+  return data
+}
+
 export async function getTeacherSchedules(token) {
   const response = await fetch(`${API_URL}/teacher-schedules`, {
     method: 'GET',

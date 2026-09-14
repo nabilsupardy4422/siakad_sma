@@ -11,6 +11,7 @@ use App\Http\Controllers\StudentGradeController;
 use App\Http\Controllers\WaliKelasGradeController;
 use App\Http\Controllers\WakakurGradeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WakakurKbmMonitoringController;
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -38,6 +39,12 @@ Route::middleware('auth:sanctum')->group(function () {
     // Wakakur - Monitoring Nilai
     Route::get('/wakakur/grade-monitoring', [WakakurGradeController::class, 'index'])
     ->middleware('role:Wakakur');
+
+    // Wakakur - Monitoring KBM
+    Route::get(
+        '/wakakur/kbm-monitoring',
+        [WakakurKbmMonitoringController::class, 'index']
+    )->middleware('role:Wakakur');
 
     // Guru Mata Pelajaran
     Route::get(

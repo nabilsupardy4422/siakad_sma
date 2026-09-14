@@ -24,6 +24,7 @@ import WaliKelasGradePage from './pages/Penilaian/WaliKelasGradePage'
 import StudentGradePage from './pages/Penilaian/StudentGradePage'
 import TeacherGradeViewPage from './pages/Penilaian/TeacherGradeViewPage'
 import WakakurGradeMonitoringPage from './pages/Penilaian/WakakurGradeMonitoringPage'
+import MonitoringKbmPage from './pages/MonitoringKBM/MonitoringKbmPage'
 import GradePage from './pages/Penilaian/GradePage'
 import './App.css'
 
@@ -91,7 +92,7 @@ function App() {
             {/* Monitoring KBM */}
             <Route
               path="/wakakur/monitoring"
-              element={<ScheduleMonitoringPage />}
+              element={<MonitoringKbmPage />}
             />
 
             {/* Evaluasi Akademik / Monitoring Nilai */}
