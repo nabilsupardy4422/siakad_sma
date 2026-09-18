@@ -146,6 +146,9 @@ Make sure the frontend API configuration points to the running Laravel backend.
 
 Project ini berfokus pada pengembangan sistem akademik berbasis web dengan pemisahan frontend dan backend, REST API, role-based authorization, serta integrasi data antar modul akademik.
 
+##Deskripsi
+Sistem Informasi Akademik SMA berbasis React, Laravel REST API, dan MySQL dengan role-based access control.
+
 ## Author
 
 **Nabil Adillah Supardy**
